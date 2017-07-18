@@ -1,6 +1,9 @@
 package com.tw;
 
+
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class DelimiterParser {
@@ -8,12 +11,18 @@ public class DelimiterParser {
     }
 
     public List<String> parse(String string) {
-        if (string.startsWith("//")) {
-            if (string.contains("[")) {
-                return Arrays.asList(string.substring(3, 4));
-            }
-            return Arrays.asList(string.substring(2, 3));
+        if (!string.startsWith("//")) {
+            return Collections.singletonList(" ");
         }
-        return Arrays.asList(" ");
+        if (!string.contains("[")) {
+            return Collections.singletonList(string.substring(2, 3));
+        }
+
+        String string1 = string.substring(string.indexOf("["), string.lastIndexOf("]") + 1);
+        ArrayList<String> result = new ArrayList<>();
+        for (int i = 1; i < string1.length(); i+=3) {
+            result.add(string1.substring(i, i + 1));
+        }
+        return result;
     }
 }
