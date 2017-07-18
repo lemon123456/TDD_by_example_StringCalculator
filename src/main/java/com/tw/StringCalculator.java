@@ -1,5 +1,7 @@
 package com.tw;
 
+import java.util.List;
+
 public class StringCalculator {
     private final DelimiterParser delimiterParser = new DelimiterParser();
     private final NumberParser numberParser = new NumberParser();
@@ -12,8 +14,8 @@ public class StringCalculator {
             return 0;
         }
 
-        String delimiter = delimiterParser.parse(string);
-        String[] numbers = numberParser.parse(string, delimiter);
+        List<String> delimiters = delimiterParser.parse(string);
+        String[] numbers = numberParser.parse(string, delimiters);
         ensureNoNegatives(numbers);
         return sum(numbers);
     }
