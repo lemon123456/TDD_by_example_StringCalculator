@@ -8,6 +8,10 @@ public class StringCalculator {
         if (string.isEmpty()) {
             return 0;
         }
-        return Integer.valueOf(string);
+        String[] numbers = string.split(" ");
+        if (numbers.length == 1) {
+            return Integer.valueOf(string);
+        }
+        return Integer.valueOf(numbers[0]) + Integer.valueOf(numbers[1]);
     }
 }

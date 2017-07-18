@@ -18,4 +18,10 @@ public class StringCalculatorTest {
         assertEquals(1, stringCalculator.calculate("1"));
         assertEquals(3, stringCalculator.calculate("3"));
     }
+
+    @Test
+    public void return_number_when_input_has_two_numbers() throws Exception {
+        assertEquals(3, stringCalculator.calculate("1 2"));
+        assertEquals(6, stringCalculator.calculate("3 3"));
+    }
 }
