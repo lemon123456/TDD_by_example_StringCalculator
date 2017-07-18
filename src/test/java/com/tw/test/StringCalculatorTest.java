@@ -36,4 +36,10 @@ public class StringCalculatorTest {
         assertEquals(6, stringCalculator.calculate("1\n2 3"));
         assertEquals(10, stringCalculator.calculate("1\n2 3\n4"));
     }
+
+    @Test
+    public void specify_delimiter() throws Exception {
+        assertEquals(3, stringCalculator.calculate("//;\n1;2"));
+        assertEquals(6, stringCalculator.calculate("//;\n1\n2;3"));
+    }
 }
