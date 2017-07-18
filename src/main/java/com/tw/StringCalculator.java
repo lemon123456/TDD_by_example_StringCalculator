@@ -8,8 +8,9 @@ public class StringCalculator {
         if (string.isEmpty()) {
             return 0;
         }
+
         int result = 0;
-        String[] numbers = string.split(" ");
+        String[] numbers = string.replaceAll("\n", " ").split(" ");
         for (String number : numbers) {
             result += Integer.valueOf(number);
         }

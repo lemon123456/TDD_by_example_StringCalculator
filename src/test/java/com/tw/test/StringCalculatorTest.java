@@ -30,4 +30,10 @@ public class StringCalculatorTest {
         assertEquals(6, stringCalculator.calculate("1 2 3"));
         assertEquals(10, stringCalculator.calculate("1 2 3 4"));
     }
+
+    @Test
+    public void return_sum_when_input_has_multiple_lines() throws Exception {
+        assertEquals(6, stringCalculator.calculate("1\n2 3"));
+        assertEquals(10, stringCalculator.calculate("1\n2 3\n4"));
+    }
 }
