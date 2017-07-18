@@ -11,12 +11,20 @@ public class StringCalculator {
 
         String delimiter = parseDelimiter(string);
         String[] numbers = parseNumbers(string, delimiter);
-
+        ensureNoNegatives(numbers);
         int result = 0;
         for (String number : numbers) {
             result += Integer.valueOf(number);
         }
         return result;
+    }
+
+    private void ensureNoNegatives(String[] numbers) {
+        for (String number : numbers) {
+            if (Integer.valueOf(number) < 0) {
+                throw new ArithmeticException("Negatives not allowed");
+            }
+        }
     }
 
     private String parseDelimiter(String string) {

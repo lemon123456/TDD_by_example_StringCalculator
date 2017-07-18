@@ -1,12 +1,16 @@
 package com.tw.test;
 
 import com.tw.StringCalculator;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import static org.junit.Assert.assertEquals;
 
 public class StringCalculatorTest {
     private final StringCalculator stringCalculator = new StringCalculator();
+    @Rule
+    public ExpectedException thrown = ExpectedException.none();
 
     @Test
     public void return_zero_when_input_is_empty() throws Exception {
@@ -41,5 +45,12 @@ public class StringCalculatorTest {
     public void specify_delimiter() throws Exception {
         assertEquals(3, stringCalculator.calculate("//;\n1;2"));
         assertEquals(6, stringCalculator.calculate("//;\n1\n2;3"));
+    }
+
+    @Test
+    public void throw_exception_when_input_contains_negative_number() throws Exception {
+        thrown.expect(ArithmeticException.class);
+        thrown.expectMessage("Negatives not allowed");
+        stringCalculator.calculate("//;\n-1;2");
     }
 }
