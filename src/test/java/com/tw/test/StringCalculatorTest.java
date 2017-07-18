@@ -20,8 +20,14 @@ public class StringCalculatorTest {
     }
 
     @Test
-    public void return_number_when_input_has_two_numbers() throws Exception {
+    public void return_sum_when_input_has_two_numbers() throws Exception {
         assertEquals(3, stringCalculator.calculate("1 2"));
         assertEquals(6, stringCalculator.calculate("3 3"));
+    }
+
+    @Test
+    public void return_sum_when_input_has_multiple_numbers() throws Exception {
+        assertEquals(6, stringCalculator.calculate("1 2 3"));
+        assertEquals(10, stringCalculator.calculate("1 2 3 4"));
     }
 }

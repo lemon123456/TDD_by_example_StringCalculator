@@ -8,10 +8,11 @@ public class StringCalculator {
         if (string.isEmpty()) {
             return 0;
         }
+        int result = 0;
         String[] numbers = string.split(" ");
-        if (numbers.length == 1) {
-            return Integer.valueOf(string);
+        for (String number : numbers) {
+            result += Integer.valueOf(number);
         }
-        return Integer.valueOf(numbers[0]) + Integer.valueOf(numbers[1]);
+        return result;
     }
 }
