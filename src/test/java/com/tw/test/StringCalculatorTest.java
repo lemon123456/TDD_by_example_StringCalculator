@@ -42,12 +42,6 @@ public class StringCalculatorTest {
     }
 
     @Test
-    public void specify_delimiter() throws Exception {
-        assertEquals(3, stringCalculator.calculate("//;\n1;2"));
-        assertEquals(6, stringCalculator.calculate("//;\n1\n2;3"));
-    }
-
-    @Test
     public void throw_exception_when_input_contains_negative_number() throws Exception {
         thrown.expect(ArithmeticException.class);
         thrown.expectMessage("Negatives not allowed: -1");
