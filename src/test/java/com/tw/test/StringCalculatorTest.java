@@ -50,7 +50,14 @@ public class StringCalculatorTest {
     @Test
     public void throw_exception_when_input_contains_negative_number() throws Exception {
         thrown.expect(ArithmeticException.class);
-        thrown.expectMessage("Negatives not allowed");
+        thrown.expectMessage("Negatives not allowed: -1");
         stringCalculator.calculate("//;\n-1;2");
+    }
+
+    @Test
+    public void throw_exception_when_input_contains_multiple_negative_number() throws Exception {
+        thrown.expect(ArithmeticException.class);
+        thrown.expectMessage("Negatives not allowed: -1 -2");
+        stringCalculator.calculate("//;\n-1;4;-2;3");
     }
 }
