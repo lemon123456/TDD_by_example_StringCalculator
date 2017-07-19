@@ -24,4 +24,10 @@ public class DelimiterParserTest {
         assertEquals(Arrays.asList(";", "%"), new DelimiterParser().parse("//[;][%]\n1;2"));
     }
 
+    @Test
+    public void parse_multiple_long_delimiters_with_default_format() throws Exception {
+        assertEquals(Arrays.asList("***"), new DelimiterParser().parse("//[***]\n1***2"));
+//        assertEquals(Arrays.asList(";;", "%%%%"), new DelimiterParser().parse("//[;;][%%%%]\n1;;2%%%3"));
+    }
+
 }

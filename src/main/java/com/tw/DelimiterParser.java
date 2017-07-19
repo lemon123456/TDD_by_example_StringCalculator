@@ -18,10 +18,14 @@ public class DelimiterParser {
             return Collections.singletonList(string.substring(2, 3));
         }
 
-        String string1 = string.substring(string.indexOf("["), string.lastIndexOf("]") + 1);
+        String delimitersString = string.substring(string.indexOf("["), string.lastIndexOf("]") + 1);
         ArrayList<String> result = new ArrayList<>();
-        for (int i = 1; i < string1.length(); i+=3) {
-            result.add(string1.substring(i, i + 1));
+
+        for (String delimiterString : delimitersString.split("\\[")) {
+            if (delimiterString.isEmpty()) {
+                continue;
+            }
+            result.add(delimiterString.substring(0, delimiterString.length() - 1));
         }
         return result;
     }
