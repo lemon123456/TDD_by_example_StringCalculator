@@ -16,16 +16,16 @@ public class StringCalculator {
         }
 
         List<String> delimiters = delimiterParser.parse(string);
-        String[] numbers = numberParser.parse(string, delimiters);
+        List<Integer> numbers = numberParser.parse(string, delimiters);
         ensureNoNegatives(numbers);
 
         return sum(filterOutBigNumbers(numbers));
     }
 
-    private void ensureNoNegatives(String[] numbers) {
+    private void ensureNoNegatives(List<Integer> numbers) {
         StringBuilder negatives = new StringBuilder();
-        for (String number : numbers) {
-            if (Integer.valueOf(number) < 0) {
+        for (int number : numbers) {
+            if (number < 0) {
                 negatives.append(" ").append(number);
             }
         }
@@ -34,20 +34,20 @@ public class StringCalculator {
         }
     }
 
-    private ArrayList<String> filterOutBigNumbers(String[] numbers) {
-        ArrayList<String> filteredNumbers = new ArrayList<>();
-        for (String number : numbers) {
-            if (Integer.valueOf(number) < 1000) {
+    private List<Integer> filterOutBigNumbers(List<Integer> numbers) {
+        List<Integer> filteredNumbers = new ArrayList<>();
+        for (Integer number : numbers) {
+            if (number < 1000) {
                 filteredNumbers.add(number);
             }
         }
         return filteredNumbers;
     }
 
-    private int sum(ArrayList<String> numbers) {
+    private int sum(List<Integer> numbers) {
         int result = 0;
-        for (String number : numbers) {
-            result += Integer.valueOf(number);
+        for (Integer number : numbers) {
+            result += number;
         }
         return result;
     }
