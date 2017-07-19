@@ -42,6 +42,11 @@ public class StringCalculatorTest {
     }
 
     @Test
+    public void return_sum_when_input_has_multiple_delimiters() throws Exception {
+        assertEquals(15, stringCalculator.calculate("//[;;][%%%]\n1\n2;;3%%%4;;5"));
+    }
+
+    @Test
     public void throw_exception_when_input_contains_negative_number() throws Exception {
         thrown.expect(ArithmeticException.class);
         thrown.expectMessage("Negatives not allowed: -1");
