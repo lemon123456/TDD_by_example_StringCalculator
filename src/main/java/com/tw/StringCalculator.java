@@ -1,5 +1,6 @@
 package com.tw;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class StringCalculator {
@@ -17,7 +18,8 @@ public class StringCalculator {
         List<String> delimiters = delimiterParser.parse(string);
         String[] numbers = numberParser.parse(string, delimiters);
         ensureNoNegatives(numbers);
-        return sum(numbers);
+
+        return sum(filterOutBigNumbers(numbers));
     }
 
     private void ensureNoNegatives(String[] numbers) {
@@ -32,7 +34,17 @@ public class StringCalculator {
         }
     }
 
-    private int sum(String[] numbers) {
+    private ArrayList<String> filterOutBigNumbers(String[] numbers) {
+        ArrayList<String> filteredNumbers = new ArrayList<>();
+        for (String number : numbers) {
+            if (Integer.valueOf(number) < 1000) {
+                filteredNumbers.add(number);
+            }
+        }
+        return filteredNumbers;
+    }
+
+    private int sum(ArrayList<String> numbers) {
         int result = 0;
         for (String number : numbers) {
             result += Integer.valueOf(number);

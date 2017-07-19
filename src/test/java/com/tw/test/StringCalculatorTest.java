@@ -59,4 +59,9 @@ public class StringCalculatorTest {
         thrown.expectMessage("Negatives not allowed: -1 -2");
         stringCalculator.calculate("//;\n-1;4;-2;3");
     }
+
+    @Test
+    public void filter_out_numbers_which_is_greater_than_or_equals_to_one_thousand() throws Exception {
+        assertEquals(3, stringCalculator.calculate("//[;;]\n1\n2;;1000"));
+    }
 }
